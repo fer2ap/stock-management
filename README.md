@@ -40,6 +40,8 @@ For this project, the MySQL DB was designed with 2 tables: a Stock table contain
 
 # ENDPOINTS
 
+### Check out screenhots folder for exemples
+
 Seach for all the stocks and its quotes in the MySQL DB
 
 HTTP Method: GET
