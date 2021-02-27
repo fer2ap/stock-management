@@ -34,6 +34,10 @@ And run the project with which will install all the project dependencies and run
 
 `./mvnw spring-boot:run`
 
+# MODELS
+
+For this project, the MySQL DB was designed with 2 tables: a Stock table containing a unique attribute name that's also the primary key and the Quotes table. Each Quote has the attribute float value and is mapped by the column stock_id to a stock. A quote must not be orphan and the DB was configured to delete all orphans Quote.
+
 # ENDPOINTS
 
 Seach for all the stocks and its quotes in the MySQL DB
