@@ -33,3 +33,188 @@ Before running the project, you'll need to give execution permision to the .mvnw
 And run the project with which will install all the project dependencies and run the application at the port 8080:
 
 `./mvnw spring-boot:run`
+
+# ENDPOINTS
+
+Seach for all the stocks and its quotes in the MySQL DB
+
+HTTP Method: GET
+
+Endpoint: http://localhost:8080/stock
+
+Request body: none
+
+Return type: List<Map<String, Object>>
+
+[
+
+    {
+    
+        "name": STOCK_1_NAME,
+        
+        "quotes": [
+        
+            quote_value_1,
+            
+            quote_value_2
+            
+        ]
+        
+    }
+    
+]
+
+-----
+
+Seach for the stock with the given name and its quotes in the MySQL DB
+
+HTTP Method: GET
+
+Endpoint: http://localhost:8080/stock?name=<STOCK_NAME>
+
+Request body: none
+
+Return type: List<Map<String, Object>>
+
+[
+
+    {
+    
+        "name": STOCK_NAME,
+        
+        "quotes": [
+        
+            quote_value_1,
+            
+            quote_value_2,
+            
+            quote_value_3
+            
+        ]
+        
+    }
+    
+]
+
+-----
+
+Create a stock with the given unique name and its quotes in the MySQL DB. The quotes on the request body is optional and may be ommited.
+
+HTTP Method: POST
+
+Endpoint: http://localhost:8080/stock
+
+Request body: 
+
+[
+
+    {
+    
+        "name": STOCK_NAME,
+        
+        "quotes": [
+        
+            quote_value_1,
+            
+            quote_value_2,
+            
+            quote_value_3
+            
+        ]
+        
+    }
+    
+]
+
+Response type: List<Map<String, Object>>
+
+[
+
+    {
+    
+        "name": STOCK_NAME,
+        
+        "quotes": [
+        
+            quote_value_1,
+            
+            quote_value_2,
+            
+            quote_value_3
+            
+        ]
+        
+    }
+    
+]
+
+-----
+
+Update a stock with the given name and adds quotes to the MySQL DB.
+
+The quotes on the request body are required for this resource.
+
+HTTP Method: PATCH
+
+Endpoint:  http://localhost:8080/stock/<STOCK_NAME>
+
+Request body: 
+
+[
+
+    {
+            
+        "quotes": [
+        
+            quote_value_4,
+            
+            quote_value_5,
+            
+            quote_value_6
+            
+        ]
+        
+    }
+    
+]
+
+Response type: List<Map<String, Object>>
+
+[
+
+    {
+    
+        "name": STOCK_NAME,
+        
+        "quotes": [
+        
+            quote_value_1,
+            
+            quote_value_2,
+            
+            quote_value_3,
+            
+            quote_value_4,
+            
+            quote_value_5,
+            
+            quote_value_6
+            
+        ]
+        
+    }
+    
+]
+      
+-----
+
+Delete a stock with the given name and also its quotes.
+
+HTTP Method: DELETE
+
+Endpoint: http://localhost:8080/stock/<STOCK_NAME>
+
+Request body: none
+
+Response body: none
+ 
