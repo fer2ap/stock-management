@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+ app:
+    build: .
+    ports:
+    - "8080:8080"
+    volumes:
+      - .:/app/src/
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=myapp-user
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=stock
+      - DATABASE_PORT=3306
+ db:
+    image: mysql:5.7
+    restart: always
+    tty: true
+    volumes:
+      - .mysqldataH:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=stock
+      - MYSQL_USER=myapp-user
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
